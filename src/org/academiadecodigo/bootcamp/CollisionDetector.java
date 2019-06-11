@@ -1,10 +1,9 @@
 package org.academiadecodigo.bootcamp;
 
-import org.academiadecodigo.bootcamp.car.GameObject;
-import org.academiadecodigo.bootcamp.car.Player;
+
 
 public class CollisionDetector {
-
+/*
     private GameObject[] gameObject;
     private Player player1;
     private Player player2;
@@ -34,7 +33,7 @@ public class CollisionDetector {
 
         return false;
     }
-
+*/
 
     /*
     private Car[] cars;
@@ -58,24 +57,24 @@ public class CollisionDetector {
     }
 
     /**
-     * Checks for collisions with specific car
+     * Checks for collisions with specific gameobjects
      * Requires iterating the array once
-     * @param car
+     * @param gameobjects
      */
 
 /*
-    public void check(Car car) {
+    public void check(Car gameobjects) {
 
         for (Car ic : cars) {
 
             // No point in checking collisions with self
-            if (ic == car) {
+            if (ic == gameobjects) {
                 continue;
             }
 
-            if (ic.getPos().equals(car.getPos())) {
+            if (ic.getPos().equals(gameobjects.getPos())) {
                 ic.crash();
-                car.crash();
+                gameobjects.crash();
             }
         }
 
