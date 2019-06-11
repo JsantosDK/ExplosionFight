@@ -36,34 +36,51 @@ public class Location {
         this.rows = rows;
     }
 
-    public void moveUp(Player player) {
+    public void move(Direction direction, Player player){
+        switch (direction){
+            case UP:
+                moveUp(player);
+                break;
+            case DOWN:
+                moveDown(player);
+                break;
+            case LEFT:
+                moveLeft(player);
+                break;
+            case RIGHT:
+                moveRight(player);
+                break;
+        }
+    }
+
+    private void moveUp(Player player) {
         Location whereto = player.getLocation();
         if (whereto.getRows() - 1 > 0) {
-            player.setLocation(whereto.getCols(), whereto.getRows() - 1);
+            player.getLocation().setRows(player.getLocation().getRows()-1);
             player.getImage().translate(0, map.cellsToPixel(-1));
         }
     }
 
-    public void moveDown(Player player) {
+    private void moveDown(Player player) {
         Location whereto = player.getLocation();
         if (whereto.getRows() + 1 < map.getHeight()) {
-            player.setLocation(whereto.getCols(), whereto.getRows() + 1);
+            player.getLocation().setRows(player.getLocation().getRows()+1);
             player.getImage().translate(0, map.cellsToPixel(1));
         }
     }
 
-    public void moveLeft(Player player) {
+    private void moveLeft(Player player) {
         Location whereto = player.getLocation();
         if (whereto.getCols() - 1 > 0) {
-            player.setLocation(whereto.getCols() - 1, whereto.getRows());
+            player.getLocation().setCols(player.getLocation().getCols()-1);
             player.getImage().translate(map.cellsToPixel(-1), 0);
         }
     }
 
-    public void moveRight(Player player) {
+    private void moveRight(Player player) {
         Location whereto = player.getLocation();
         if (whereto.getCols() + 1 < map.getWidth()) {
-            player.setLocation(whereto.getCols() + 1, whereto.getRows());
+            player.getLocation().setCols(player.getLocation().getCols()+1);
             player.getImage().translate(map.cellsToPixel(+1), 0);
         }
     }

@@ -1,6 +1,7 @@
 package org.academiadecodigo.bootcamp.gameobjects;
 
 import org.academiadecodigo.bootcamp.CollisionDetector;
+import org.academiadecodigo.bootcamp.Location;
 import org.academiadecodigo.bootcamp.Map;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
@@ -8,6 +9,8 @@ public abstract class GameObject {
 
     private Picture image;
     private Map map;
+    private Location location;
+    private CollisionDetector collisionDetector;
 
     public GameObject(Picture image, Map map) {
         this.image = image;
@@ -21,7 +24,24 @@ public abstract class GameObject {
     public Map getMap(){
         return map;
     }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public void setCollisionDetector(CollisionDetector collisionDetector) {
+        this.collisionDetector = collisionDetector;
+    }
+
+    public CollisionDetector getCollisionDetector() {
+        return collisionDetector;
+    }
 }
+
     /*
     private boolean status;
     private CollisionDetector collisionDetector;

@@ -20,24 +20,26 @@ public class Game {
         map = new Map(new Picture(10,10,"floor.png"));
         playerOne = new PlayerOne(new Picture(0,0,"morty.png"), map);
         playerTwo = new PlayerTwo(new Picture(0,0,"rick.png"), map);
+        collisionDetector = new CollisionDetector(playerOne, playerTwo);
         keyboardManager = new KeyboardManager(playerOne,playerTwo);
         this.delay = delay;
     }
 
     public void init() {
-
         keyboardManager.keyboardInit();
-
         }
 
 
     public void start() throws InterruptedException {
 
-        while (true) {
+        playerOne.setCollisionDetector(collisionDetector);
+        playerTwo.setCollisionDetector(collisionDetector);
 
+        while (true) {
             Thread.sleep(delay);
             playerOne.getBomb().countDown();
             playerTwo.getBomb().countDown();
+
         }
 
     }

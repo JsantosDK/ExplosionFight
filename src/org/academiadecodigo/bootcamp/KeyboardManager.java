@@ -6,8 +6,6 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
-import java.security.Key;
-
 public class KeyboardManager implements KeyboardHandler {
 
     private Player player1;
@@ -63,90 +61,42 @@ public class KeyboardManager implements KeyboardHandler {
             this.keyboard.addEventListener(eventPlayerTwoBomb);
         }
 
-
+        @Override
         public void keyPressed(KeyboardEvent keyboardEvent) {
 
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_W) {
-            player1.getLocation().moveUp(player1);
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_W && !player1.getCollisionDetector().checkCollision(player1.getLocation().getCols(), player1.getLocation().getRows() - 1))  {
+            player1.getLocation().move(Direction.UP, player1);
         }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_S) {
-            player1.getLocation().moveDown(player1);
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_S && !player1.getCollisionDetector().checkCollision(player1.getLocation().getCols(), player1.getLocation().getRows() + 1))  {
+            player1.getLocation().move(Direction.DOWN,player1);
         }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_A) {
-            player1.getLocation().moveLeft(player1);
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_A && !player1.getCollisionDetector().checkCollision(player1.getLocation().getCols() - 1, player1.getLocation().getRows()))  {
+            player1.getLocation().move(Direction.LEFT,player1);
         }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_D) {
-            player1.getLocation().moveRight(player1);
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_D && !player1.getCollisionDetector().checkCollision(player1.getLocation().getCols() + 1, player1.getLocation().getRows()))  {
+            player1.getLocation().move(Direction.RIGHT,player1);
         }
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_Q) {
             player1.dropBomb();
         }
-
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_I) {
-            player2.getLocation().moveUp(player2);
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_I && !player1.getCollisionDetector().checkCollision(player2.getLocation().getCols(), player2.getLocation().getRows() - 1))  {
+            player2.getLocation().move(Direction.UP,player2);
         }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_K) {
-            player2.getLocation().moveDown(player2);
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_K && !player1.getCollisionDetector().checkCollision(player2.getLocation().getCols(), player2.getLocation().getRows() + 1))  {
+            player2.getLocation().move(Direction.DOWN,player2);
         }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_J) {
-            player2.getLocation().moveLeft(player2);
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_J && !player1.getCollisionDetector().checkCollision(player2.getLocation().getCols() - 1, player2.getLocation().getRows()))  {
+            player2.getLocation().move(Direction.LEFT, player2);
         }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_L) {
-            player2.getLocation().moveRight(player2);
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_L && !player1.getCollisionDetector().checkCollision(player2.getLocation().getCols() + 1, player2.getLocation().getRows()))  {
+            player2.getLocation().move(Direction.RIGHT, player2);
         }
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_U) {
             player2.dropBomb();
         }
+    }
 
-
-
-        /*
-
-
-            if (keyboardEvent.getKey() == 73 && !this.player1.getCollisionDetector().checkCollision(this.player1.getPos().getCol(), this.player1.getPos().getRow() - 1)) {
-                this.player1.getPos().moveInDirection(GridDirection.UP, this.player1);
-            }
-
-            if (keyboardEvent.getKey() == 75 && !this.player1.getCollisionDetector().checkCollision(this.player1.getPos().getCol(), this.player1.getPos().getRow() + 1)) {
-                this.player1.getPos().moveInDirection(GridDirection.DOWN, this.player1);
-            }
-
-            if (keyboardEvent.getKey() == 74 && !this.player1.getCollisionDetector().checkCollision(this.player1.getPos().getCol() - 1, this.player1.getPos().getRow())) {
-                this.player1.getPos().moveInDirection(GridDirection.LEFT, this.player1);
-            }
-
-            if (keyboardEvent.getKey() == 76 && !this.player1.getCollisionDetector().checkCollision(this.player1.getPos().getCol() + 1, this.player1.getPos().getRow())) {
-                this.player1.getPos().moveInDirection(GridDirection.RIGHT, this.player1);
-            }
-
-            if (keyboardEvent.getKey() == 85) {
-                this.player1.dropBomb();
-            }
-
-            if (keyboardEvent.getKey() == 87 && !this.player2.getCollisionDetector().checkCollision(this.player2.getPos().getCol(), this.player2.getPos().getRow() - 1)) {
-                this.player2.getPos().moveInDirection(GridDirection.UP, this.player2);
-            }
-
-            if (keyboardEvent.getKey() == 83 && !this.player2.getCollisionDetector().checkCollision(this.player2.getPos().getCol(), this.player2.getPos().getRow() + 1)) {
-                this.player2.getPos().moveInDirection(GridDirection.DOWN, this.player2);
-            }
-
-            if (keyboardEvent.getKey() == 65 && !this.player2.getCollisionDetector().checkCollision(this.player2.getPos().getCol() - 1, this.player2.getPos().getRow())) {
-                this.player2.getPos().moveInDirection(GridDirection.LEFT, this.player2);
-            }
-
-            if (keyboardEvent.getKey() == 68 && !this.player2.getCollisionDetector().checkCollision(this.player2.getPos().getCol() + 1, this.player2.getPos().getRow())) {
-                this.player2.getPos().moveInDirection(GridDirection.RIGHT, this.player2);
-            }
-
-            if (keyboardEvent.getKey() == 81) {
-                this.player2.dropBomb();
-            }
-        */
-        }
-
-
+        @Override
         public void keyReleased(KeyboardEvent keyboardEvent) {
         }
     }
-

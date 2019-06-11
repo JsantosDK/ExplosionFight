@@ -8,26 +8,25 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Bomb extends GameObject{
 
     private boolean usingBomb;
-    private Location location;
     private Player player;
     private int timeUntilExplosition;
 
 
     public Bomb(Map map, Player player){
         super(new Picture(0,0,"bomb.png"), map);
-        location = new Location(0,0,map);
+        setLocation( new Location(0,0,map));
         this.player = player;
     }
 
     protected void dropBomb(int cols, int rows) {
         if (!usingBomb) {
-            int oldCol = location.getCols();
-            int oldRow = location.getRows();
-            location.setCols(cols);
-            location.setRows(rows);
+            int oldCol = getLocation().getCols();
+            int oldRow = getLocation().getRows();
+            getLocation().setCols(cols);
+            getLocation().setRows(rows);
             usingBomb = true;
             timeUntilExplosition = 10;
-            getImage().translate(getMap().cellsToPixel(location.getCols() - oldCol), getMap().cellsToPixel(location.getRows() - oldRow));
+            getImage().translate(getMap().cellsToPixel(getLocation().getCols() - oldCol), getMap().cellsToPixel(getLocation().getRows() - oldRow));
             getImage().draw();
         }
     }
@@ -44,12 +43,12 @@ public class Bomb extends GameObject{
 
 
     protected void explodingBomb(){
-        int oldCol = location.getCols();
-        int oldRow = location.getRows();
-        location.setCols(-20);
-        location.setRows(-20);
+        int oldCol = getLocation().getCols();
+        int oldRow = getLocation().getRows();
+        getLocation().setCols(-20);
+        getLocation().setRows(-20);
         usingBomb = false;
-        getImage().translate(getMap().cellsToPixel(location.getCols()-oldCol), getMap().cellsToPixel(location.getRows()-oldRow));
+        getImage().translate(getMap().cellsToPixel(getLocation().getCols()-oldCol), getMap().cellsToPixel(getLocation().getRows()-oldRow));
         getImage().delete();
     }
 
