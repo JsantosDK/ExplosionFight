@@ -6,6 +6,8 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
 
+import java.security.Key;
+
 public class KeyboardManager implements KeyboardHandler {
 
     private Player player1;
@@ -20,43 +22,43 @@ public class KeyboardManager implements KeyboardHandler {
 
         public void keyboardInit() {
             KeyboardEvent eventPlayerOneUP = new KeyboardEvent();
-            eventPlayerOneUP.setKey(73);
+            eventPlayerOneUP.setKey(KeyboardEvent.KEY_W);
             eventPlayerOneUP.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             this.keyboard.addEventListener(eventPlayerOneUP);
             KeyboardEvent eventPlayerOneDown = new KeyboardEvent();
-            eventPlayerOneDown.setKey(75);
+            eventPlayerOneDown.setKey(KeyboardEvent.KEY_S);
             eventPlayerOneDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             this.keyboard.addEventListener(eventPlayerOneDown);
             KeyboardEvent eventPlayerOneLeft = new KeyboardEvent();
-            eventPlayerOneLeft.setKey(74);
+            eventPlayerOneLeft.setKey(KeyboardEvent.KEY_A);
             eventPlayerOneLeft.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             this.keyboard.addEventListener(eventPlayerOneLeft);
             KeyboardEvent eventPlayerOneRight = new KeyboardEvent();
-            eventPlayerOneRight.setKey(76);
+            eventPlayerOneRight.setKey(KeyboardEvent.KEY_D);
             eventPlayerOneRight.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             this.keyboard.addEventListener(eventPlayerOneRight);
             KeyboardEvent eventPlayerOneBomb = new KeyboardEvent();
-            eventPlayerOneBomb.setKey(85);
+            eventPlayerOneBomb.setKey(KeyboardEvent.KEY_Q);
             eventPlayerOneBomb.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             this.keyboard.addEventListener(eventPlayerOneBomb);
             KeyboardEvent eventPlayerTwoUP = new KeyboardEvent();
-            eventPlayerTwoUP.setKey(87);
+            eventPlayerTwoUP.setKey(KeyboardEvent.KEY_I);
             eventPlayerTwoUP.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             this.keyboard.addEventListener(eventPlayerTwoUP);
             KeyboardEvent eventPlayerTwoDown = new KeyboardEvent();
-            eventPlayerTwoDown.setKey(83);
+            eventPlayerTwoDown.setKey(KeyboardEvent.KEY_K);
             eventPlayerTwoDown.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             this.keyboard.addEventListener(eventPlayerTwoDown);
             KeyboardEvent eventPlayerTwoLeft = new KeyboardEvent();
-            eventPlayerTwoLeft.setKey(65);
+            eventPlayerTwoLeft.setKey(KeyboardEvent.KEY_J);
             eventPlayerTwoLeft.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             this.keyboard.addEventListener(eventPlayerTwoLeft);
             KeyboardEvent eventPlayerTwoRight = new KeyboardEvent();
-            eventPlayerTwoRight.setKey(68);
+            eventPlayerTwoRight.setKey(KeyboardEvent.KEY_L);
             eventPlayerTwoRight.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             this.keyboard.addEventListener(eventPlayerTwoRight);
             KeyboardEvent eventPlayerTwoBomb = new KeyboardEvent();
-            eventPlayerTwoBomb.setKey(81);
+            eventPlayerTwoBomb.setKey(KeyboardEvent.KEY_U);
             eventPlayerTwoBomb.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             this.keyboard.addEventListener(eventPlayerTwoBomb);
         }
@@ -79,10 +81,6 @@ public class KeyboardManager implements KeyboardHandler {
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_Q) {
             player1.dropBomb();
         }
-            if (keyboardEvent.getKey() == KeyboardEvent.KEY_E) {
-                player1.bomb2();
-            }
-
 
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_I) {
             player2.getLocation().moveUp(player2);
@@ -96,7 +94,9 @@ public class KeyboardManager implements KeyboardHandler {
         if (keyboardEvent.getKey() == KeyboardEvent.KEY_L) {
             player2.getLocation().moveRight(player2);
         }
-
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_U) {
+            player2.dropBomb();
+        }
 
 
 

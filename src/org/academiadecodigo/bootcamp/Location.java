@@ -40,7 +40,7 @@ public class Location {
         Location whereto = player.getLocation();
         if (whereto.getRows() - 1 > 0) {
             player.setLocation(whereto.getCols(), whereto.getRows() - 1);
-            player.getImage().translate(0, map.rowsToY(-1));
+            player.getImage().translate(0, map.cellsToPixel(-1));
         }
     }
 
@@ -48,7 +48,7 @@ public class Location {
         Location whereto = player.getLocation();
         if (whereto.getRows() + 1 < map.getHeight()) {
             player.setLocation(whereto.getCols(), whereto.getRows() + 1);
-            player.getImage().translate(0, map.rowsToY(1));
+            player.getImage().translate(0, map.cellsToPixel(1));
         }
     }
 
@@ -56,7 +56,7 @@ public class Location {
         Location whereto = player.getLocation();
         if (whereto.getCols() - 1 > 0) {
             player.setLocation(whereto.getCols() - 1, whereto.getRows());
-            player.getImage().translate(map.columnsToX(-1), 0);
+            player.getImage().translate(map.cellsToPixel(-1), 0);
         }
     }
 
@@ -64,15 +64,7 @@ public class Location {
         Location whereto = player.getLocation();
         if (whereto.getCols() + 1 < map.getWidth()) {
             player.setLocation(whereto.getCols() + 1, whereto.getRows());
-            player.getImage().translate(map.columnsToX(+1), 0);
+            player.getImage().translate(map.cellsToPixel(+1), 0);
         }
-    }
-
-    public int locationColumnToX(int cols){
-        return map.columnsToX(cols);
-    }
-
-    public int locationRowsToY(int rows){
-        return map.rowsToY(rows);
     }
 }

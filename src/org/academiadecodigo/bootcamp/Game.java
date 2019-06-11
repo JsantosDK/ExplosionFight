@@ -17,7 +17,7 @@ public class Game {
     private CollisionDetector collisionDetector;
 
     Game(int delay) {
-        map = new Map(new Picture(0,0,"floor.png"));
+        map = new Map(new Picture(10,10,"floor.png"));
         playerOne = new PlayerOne(new Picture(0,0,"morty.png"), map);
         playerTwo = new PlayerTwo(new Picture(0,0,"rick.png"), map);
         keyboardManager = new KeyboardManager(playerOne,playerTwo);
@@ -36,6 +36,8 @@ public class Game {
         while (true) {
 
             Thread.sleep(delay);
+            playerOne.getBomb().countDown();
+            playerTwo.getBomb().countDown();
         }
 
     }

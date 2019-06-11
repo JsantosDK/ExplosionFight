@@ -7,16 +7,15 @@ import org.academiadecodigo.bootcamp.Map;
 public abstract class Player extends GameObject{
 
     private int health;
-    private boolean availableBomb;
     private Location location;
     private Bomb bomb;
 
     public Player(Picture image, Map map){
         super(image, map);
         location = new Location(map);
-        getImage().translate(map.columnsToX(getLocation().getCols()), map.rowsToY(getLocation().getRows()));
+        getImage().translate(map.cellsToPixel(getLocation().getCols()), map.cellsToPixel(getLocation().getRows()));
         getImage().draw();
-        bomb = new Bomb(map);
+        bomb = new Bomb(map, this);
     }
 
     public Location getLocation() {
@@ -32,7 +31,7 @@ public abstract class Player extends GameObject{
         bomb.dropBomb(location.getCols(), location.getRows());
     }
 
-    public void bomb2(){
-        bomb.explodingBomb();
+    public Bomb getBomb() {
+        return bomb;
     }
 }

@@ -12,7 +12,7 @@ public class Map {
     public Map(Picture image){
         background = image;
         background.draw();
-        cellSize = 15;
+        cellSize = 24;
         cols = background.getWidth() / cellSize;
         rows = background.getHeight() / cellSize;
     }
@@ -25,11 +25,7 @@ public class Map {
         return rows;
     }
 
-    public int columnsToX(int cols){
-        return cols * cellSize;
+    public int cellsToPixel(int cells){
+        return cells * cellSize;
     }
-    public int rowsToY(int rows){
-        return rows * cellSize;
-    }
-
 }
