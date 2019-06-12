@@ -12,7 +12,7 @@ public class Map {
     public Map(){
         background = new Picture(10,10,"floor.png");
         background.draw();
-        cellSize = 100;
+        cellSize = 105;
         cols = background.getWidth() / cellSize;
         rows = background.getHeight() / cellSize;
     }
@@ -26,6 +26,6 @@ public class Map {
     }
 
     public int cellsToPixel(int cells){
-        return cells * cellSize;
+        return cells * (cellSize-9);
     }
 }
