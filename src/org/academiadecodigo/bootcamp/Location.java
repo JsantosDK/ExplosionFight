@@ -28,11 +28,8 @@ public class Location {
         return rows;
     }
 
-    public void setCols(int cols) {
+    public void changeLocation(int cols, int rows){
         this.cols = cols;
-    }
-
-    public void setRows(int rows) {
         this.rows = rows;
     }
 
@@ -54,34 +51,31 @@ public class Location {
     }
 
     private void moveUp(Player player) {
-        Location whereto = player.getLocation();
-        if (whereto.getRows() - 1 > 0) {
-            player.getLocation().setRows(player.getLocation().getRows()-1);
+        if (player.getLocation().getRows() - 1 > 0) {
+            rows = player.getLocation().getRows() - 1;
             player.getImage().translate(0, map.cellsToPixel(-1));
         }
     }
 
     private void moveDown(Player player) {
-        Location whereto = player.getLocation();
-        if (whereto.getRows() + 1 < map.getHeight()) {
-            player.getLocation().setRows(player.getLocation().getRows()+1);
+        if (player.getLocation().getRows() + 1 < map.getHeight()) {
+            rows = player.getLocation().getRows() + 1;
             player.getImage().translate(0, map.cellsToPixel(1));
         }
     }
 
     private void moveLeft(Player player) {
-        Location whereto = player.getLocation();
-        if (whereto.getCols() - 1 > 0) {
-            player.getLocation().setCols(player.getLocation().getCols()-1);
+        if (player.getLocation().getCols() - 1 > 0) {
+            cols = player.getLocation().getCols() - 1;
             player.getImage().translate(map.cellsToPixel(-1), 0);
         }
     }
 
     private void moveRight(Player player) {
-        Location whereto = player.getLocation();
-        if (whereto.getCols() + 1 < map.getWidth()) {
-            player.getLocation().setCols(player.getLocation().getCols()+1);
+        if (player.getLocation().getCols() + 1 < map.getWidth()) {
+            cols = player.getLocation().getCols() + 1;
             player.getImage().translate(map.cellsToPixel(+1), 0);
         }
     }
+
 }

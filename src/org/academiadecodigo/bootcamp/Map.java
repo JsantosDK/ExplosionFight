@@ -9,10 +9,10 @@ public class Map {
     private Picture background;
     private int cellSize;
 
-    public Map(Picture image){
-        background = image;
+    public Map(){
+        background = new Picture(10,10,"floor.png");
         background.draw();
-        cellSize = 24;
+        cellSize = 100;
         cols = background.getWidth() / cellSize;
         rows = background.getHeight() / cellSize;
     }

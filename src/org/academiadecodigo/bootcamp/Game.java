@@ -3,9 +3,6 @@ package org.academiadecodigo.bootcamp;
 import org.academiadecodigo.bootcamp.gameobjects.Player;
 import org.academiadecodigo.bootcamp.gameobjects.PlayerOne;
 import org.academiadecodigo.bootcamp.gameobjects.PlayerTwo;
-import org.academiadecodigo.simplegraphics.pictures.Picture;
-
-
 
 public class Game {
 
@@ -17,9 +14,9 @@ public class Game {
     private CollisionDetector collisionDetector;
 
     Game(int delay) {
-        map = new Map(new Picture(10,10,"floor.png"));
-        playerOne = new PlayerOne(new Picture(0,0,"morty.png"), map);
-        playerTwo = new PlayerTwo(new Picture(0,0,"rick.png"), map);
+        map = new Map();
+        playerOne = new PlayerOne(map);
+        playerTwo = new PlayerTwo(map);
         collisionDetector = new CollisionDetector(playerOne, playerTwo);
         keyboardManager = new KeyboardManager(playerOne,playerTwo);
         this.delay = delay;

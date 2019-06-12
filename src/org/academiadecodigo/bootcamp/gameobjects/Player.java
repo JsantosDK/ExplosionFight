@@ -10,16 +10,10 @@ public abstract class Player extends GameObject{
     private Bomb bomb;
 
     public Player(Picture image, Map map){
-        super(image, map);
-        setLocation(new Location(map));
+        super(image, map, new Location(map));
         getImage().translate(map.cellsToPixel(getLocation().getCols()), map.cellsToPixel(getLocation().getRows()));
         getImage().draw();
-        bomb = new Bomb(map, this);
-    }
-
-    public void setLocation(int cols, int rows) {
-        getLocation().setCols(cols);
-        getLocation().setRows(rows);
+        bomb = new Bomb(map);
     }
 
     public void dropBomb(){
@@ -29,4 +23,5 @@ public abstract class Player extends GameObject{
     public Bomb getBomb() {
         return bomb;
     }
+
 }

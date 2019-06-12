@@ -5,7 +5,8 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class PlayerTwo extends Player {
 
-    public PlayerTwo(Picture image, Map map){
-        super(image, map);
+    public PlayerTwo(Map map){
+        super(new Picture(0,0,"rick.png"), map);
+        getImage().grow(-35,-35);
     }
 }

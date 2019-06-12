@@ -8,24 +8,23 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 public class Bomb extends GameObject{
 
     private boolean usingBomb;
-    private Player player;
-    private int timeUntilExplosition;
+    private int timeUntilExplosion;
+    private int hidingBomb;
 
 
-    public Bomb(Map map, Player player){
-        super(new Picture(0,0,"bomb.png"), map);
-        setLocation( new Location(0,0,map));
-        this.player = player;
+    public Bomb(Map map){
+        super(new Picture(0,0,"bomb.png"), map, new Location(0,0,map));
+        getImage().grow(40,40);
+        hidingBomb = - 20;
     }
 
     protected void dropBomb(int cols, int rows) {
         if (!usingBomb) {
             int oldCol = getLocation().getCols();
             int oldRow = getLocation().getRows();
-            getLocation().setCols(cols);
-            getLocation().setRows(rows);
+            getLocation().changeLocation(cols, rows);
             usingBomb = true;
-            timeUntilExplosition = 10;
+            timeUntilExplosion = 10;
             getImage().translate(getMap().cellsToPixel(getLocation().getCols() - oldCol), getMap().cellsToPixel(getLocation().getRows() - oldRow));
             getImage().draw();
         }
@@ -33,23 +32,20 @@ public class Bomb extends GameObject{
 
     public void countDown(){
         if (usingBomb){
-            if (timeUntilExplosition > 0){
-                timeUntilExplosition--;
-            } else if (timeUntilExplosition == 0){
+            if (timeUntilExplosion > 0){
+                timeUntilExplosion--;
+            } else if (timeUntilExplosion == 0){
                 explodingBomb();
             }
         }
     }
 
-
     protected void explodingBomb(){
         int oldCol = getLocation().getCols();
         int oldRow = getLocation().getRows();
-        getLocation().setCols(-20);
-        getLocation().setRows(-20);
+        getLocation().changeLocation(hidingBomb, hidingBomb);
         usingBomb = false;
         getImage().translate(getMap().cellsToPixel(getLocation().getCols()-oldCol), getMap().cellsToPixel(getLocation().getRows()-oldRow));
-        getImage().delete();
     }
 
 }

@@ -12,9 +12,10 @@ public abstract class GameObject {
     private Location location;
     private CollisionDetector collisionDetector;
 
-    public GameObject(Picture image, Map map) {
+    public GameObject(Picture image, Map map, Location location) {
         this.image = image;
         this.map = map;
+        this.location = location;
     }
 
     public Picture getImage() {
@@ -29,10 +30,6 @@ public abstract class GameObject {
         return location;
     }
 
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
     public void setCollisionDetector(CollisionDetector collisionDetector) {
         this.collisionDetector = collisionDetector;
     }
@@ -41,23 +38,3 @@ public abstract class GameObject {
         return collisionDetector;
     }
 }
-
-    /*
-    private boolean status;
-    private CollisionDetector collisionDetector;
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
-    public CollisionDetector getCollisionDetector() {
-        return collisionDetector;
-    }
-
-    public void setCollisionDetector(CollisionDetector collisionDetector) {
-        this.collisionDetector = collisionDetector;
-    }
-*/
