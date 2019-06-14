@@ -7,21 +7,21 @@ import org.academiadecodigo.bootcamp.Map;
 public abstract class Player extends GameObject{
 
     private int health;
-    private Bomb bomb;
+    private Weapon weapon;
 
     public Player(Picture image, Map map){
         super(image, map, new Location(map));
         getImage().translate(map.cellsToPixel(getLocation().getCols()), map.cellsToPixel(getLocation().getRows()));
         getImage().draw();
-        bomb = new Bomb(map);
+        weapon = new Bomb(map);
     }
 
     public void dropBomb(){
-        bomb.dropBomb(getLocation().getCols(), getLocation().getRows());
+        weapon.setUpWeapon(getLocation().getCols(), getLocation().getRows());
     }
 
-    public Bomb getBomb() {
-        return bomb;
+    public Weapon getWeapon() {
+        return weapon;
     }
 
 }

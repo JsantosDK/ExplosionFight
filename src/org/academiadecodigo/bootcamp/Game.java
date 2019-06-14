@@ -34,8 +34,10 @@ public class Game {
 
         while (true) {
             Thread.sleep(delay);
-            playerOne.getBomb().countDown();
-            playerTwo.getBomb().countDown();
+            playerOne.getWeapon().countDown();
+            playerTwo.getWeapon().countDown();
+            playerOne.getWeapon().clearField();
+            playerTwo.getWeapon().clearField();
 
         }
 

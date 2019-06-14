@@ -9,4 +9,5 @@ public class PlayerOne extends Player {
         super(new Picture(-36,-39,"morty.png"), map);
         getImage().grow(-50,-50);
     }
+
 }
