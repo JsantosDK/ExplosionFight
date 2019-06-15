@@ -62,7 +62,6 @@ public class Game {
         playerTwo.getImage().delete();
         if (collisionDetector.isLoser() instanceof PlayerOne){
             playerTwo.getWinnerScreen().draw();
-            System.out.println("Rick has won.");
         } else {
             playerOne.getWinnerScreen().draw();
         }

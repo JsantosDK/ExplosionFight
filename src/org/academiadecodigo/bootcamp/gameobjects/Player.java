@@ -14,7 +14,7 @@ public abstract class Player extends GameObject{
         this.winnerScreen = winnerScreen;
         winnerScreen.grow(-150,-150);
         getImage().translate(map.cellsToPixel(getLocation().getCols()), map.cellsToPixel(getLocation().getRows()));
-        weapon = new Bomb(map);
+        weapon = new LightningBolt(map);
     }
 
     public void dropBomb(){

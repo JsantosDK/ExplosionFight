@@ -43,6 +43,14 @@ public class CollisionDetector {
                         gameOver = true;
                     }
                     break;
+
+                case LIGHTNINGBOLT:
+                    if (player.getLocation().getRows() >= minRows && player.getLocation().getRows() <= maxRows && player.getLocation().getCols() == colsCenter) {
+                        System.out.println("Player one died too.");
+                        loser = player;
+                        gameOver = true;
+                    }
+                    break;
                 default:
                     System.out.println("Survived.");
             }
