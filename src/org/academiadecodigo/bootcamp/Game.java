@@ -26,20 +26,22 @@ public class Game {
         keyboardManager.keyboardInit();
         }
 
-
     public void start() throws InterruptedException {
 
         playerOne.setCollisionDetector(collisionDetector);
         playerTwo.setCollisionDetector(collisionDetector);
 
-        while (true) {
+        while (!playerOne.getCollisionDetector().isGameOver()) {
             Thread.sleep(delay);
+            playerOne.getWeapon().setCollisionDetector(collisionDetector);
+            playerTwo.getWeapon().setCollisionDetector(collisionDetector);
             playerOne.getWeapon().countDown();
             playerTwo.getWeapon().countDown();
             playerOne.getWeapon().clearField();
             playerTwo.getWeapon().clearField();
-
         }
+
+        System.out.println("Game Over");
 
     }
 

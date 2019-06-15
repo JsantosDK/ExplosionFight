@@ -14,6 +14,7 @@ public abstract class Player extends GameObject{
         getImage().translate(map.cellsToPixel(getLocation().getCols()), map.cellsToPixel(getLocation().getRows()));
         getImage().draw();
         weapon = new Bomb(map);
+
     }
 
     public void dropBomb(){

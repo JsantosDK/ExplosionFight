@@ -1,31 +1,28 @@
 package org.academiadecodigo.bootcamp;
 
-
-import org.academiadecodigo.bootcamp.gameobjects.GameObject;
-import org.academiadecodigo.bootcamp.gameobjects.Player;
-import org.academiadecodigo.bootcamp.gameobjects.Weapon;
-
-import java.awt.color.ColorSpace;
+import org.academiadecodigo.bootcamp.gameobjects.*;
 
 public class CollisionDetector {
 
     private GameObject[] gameObject;
-    private Player player1;
-    private Player player2;
-
-
+    private Player[] players;
+    private boolean gameOver;
+    public boolean isGameOver() {
+        return gameOver;
+    }
 
     public CollisionDetector(Player player1, Player player2){
         gameObject = new GameObject[4];
-        this.player1 = player1;
-        this.player2 = player2;
-    }
-
-    public boolean checkCollision(int col, int row){
         gameObject[0] = player1;
         gameObject[1] = player1.getWeapon();
         gameObject[2] = player2;
         gameObject[3] = player2.getWeapon();
+        players = new Player[2];
+        players[0] = player1;
+        players[1] = player2;
+    }
+
+    public boolean checkCollision(int col, int row){
         for ( int i = 0; i < gameObject.length; i++){
             if (col == gameObject[i].getLocation().getCols() && row == gameObject[i].getLocation().getRows()){
                 return true;
@@ -34,8 +31,22 @@ public class CollisionDetector {
         return false;
     }
 
-    public void checkDamage(int minCols, int maxCols, int minRows, int maxRows, Weapon weapon){
-
+    public void checkDamage(int colsCenter,int minCols, int maxCols,int rowsCenter ,int minRows, int maxRows, WeaponType weaponType){
+        for (Player player : players) {
+            switch (weaponType) {
+                case BOMB:
+                    if (player.getLocation().getCols() > minCols && player.getLocation().getCols() < maxCols && player.getLocation().getRows() == rowsCenter) {
+                        System.out.println("Player one died.");
+                        gameOver = true;
+                    } else if (player.getLocation().getRows() > minRows && player.getLocation().getRows() < maxRows && player.getLocation().getCols() == colsCenter) {
+                        System.out.println("Player one died too.");
+                        gameOver = true;
+                    }
+                    break;
+                default:
+                    System.out.println("Survived.");
+            }
+        }
     }
 }
 

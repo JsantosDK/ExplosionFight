@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.gameobjects;
 
+import org.academiadecodigo.bootcamp.CollisionDetector;
 import org.academiadecodigo.bootcamp.Location;
 import org.academiadecodigo.bootcamp.Map;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
@@ -17,5 +18,7 @@ public abstract class Weapon extends GameObject{
     protected abstract void useWeapon();
 
     public abstract void clearField();
+
+
 
 }

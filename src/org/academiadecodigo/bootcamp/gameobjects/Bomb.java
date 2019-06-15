@@ -11,8 +11,8 @@ public class Bomb extends Weapon {
     private Explosion explosion;
 
     public Bomb(Map map){
-        super(new Picture(0,0,"bomb.png"), map, new Location(0,0,map));
-        getImage().grow(15,15);
+        super(new Picture(14,-11,"erlenmeyer.png"), map, new Location(0,0,map));
+        getImage().grow(-15,-15);
         explosion = new Explosion();
     }
 
@@ -20,8 +20,8 @@ public class Bomb extends Weapon {
         if (!usingBomb) {
             getLocation().changeLocation(cols, rows);
             usingBomb = true;
-            timeUntilExplosion = 5;
-            getImage().translate(getMap().cellsToPixel(cols) + 30, getMap().cellsToPixel(rows) + 30);
+            timeUntilExplosion = 7;
+            getImage().translate(getMap().cellsToPixel(cols) , getMap().cellsToPixel(rows) );
             getImage().draw();
         }
     }
@@ -40,7 +40,7 @@ public class Bomb extends Weapon {
         explosion.explode(getLocation().getCols(),getLocation().getRows());
         getLocation().changeLocation(0, 0);
         usingBomb = false;
-        getImage().translate(-getImage().getX() - 15, -getImage().getY()-15);
+        getImage().translate(-getImage().getX() + 30, -getImage().getY() );
         getImage().delete();
     }
 
@@ -53,6 +53,8 @@ public class Bomb extends Weapon {
         private int explosionReset;
         private boolean bombArmed;
         private int usedImages;
+        private int colsCenter;
+        private int rowsCenter;
         private int minLengthCols;
         private int maxLengthCols;
         private int minLengthRows;
@@ -76,6 +78,8 @@ public class Bomb extends Weapon {
             if (cols + 2 < getMap().getWidth()-1) { maxLengthCols = cols + 2; } else { maxLengthCols = getMap().getWidth()-1; }
             if (rows - 2 > 0) { minLengthRows = rows - 2; } else { minLengthRows = 1; }
             if (rows + 2 < getMap().getHeight()-1) { maxLengthRows = rows + 2; } else { maxLengthRows = getMap().getHeight()-1; }
+            colsCenter = cols;
+            rowsCenter = rows;
 
             for (int i = minLengthCols; i <= maxLengthCols; i++) {
                 explosions[usedImages].translate(getMap().cellsToPixel(i), getMap().cellsToPixel(rows));
@@ -88,27 +92,24 @@ public class Bomb extends Weapon {
                 explosions[usedImages].draw();
                 usedImages++;
             }
-            explosionReset = 5;
+            explosionReset = 2;
             bombArmed = true;
         }
 
         private void reset() {
             if (bombArmed) {
-                checkDamage();
                 if (explosionReset != 0) {
                     explosionReset--;
                 } else {
+                    getCollisionDetector().checkDamage(colsCenter, minLengthCols,maxLengthCols,rowsCenter,minLengthRows,maxLengthRows, WeaponType.BOMB);
                     for (int i = usedImages-1; i >= 0 ; i-- ){
                         explosions[i].translate(-explosions[i].getX(), -explosions[i].getY());
                         explosions[i].delete();
                     }
-                    usedImages =0;
+                    usedImages = 0;
+                    bombArmed = false;
                 }
             }
-        }
-
-        private void checkDamage(){
-            getCollisionDetector().checkDamage(minLengthCols,maxLengthCols,minLengthRows,maxLengthCols, Bomb.this);
         }
     }
 }

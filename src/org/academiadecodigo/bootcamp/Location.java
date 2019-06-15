@@ -10,8 +10,8 @@ public class Location {
 
     public Location(Map map) {
         this.map = map;
-        cols = (int) Math.round(map.getWidth() * Math.random());
-        rows = (int) Math.round(map.getHeight() * Math.random());
+        cols = (int) Math.floor(map.getWidth() * Math.random())+1;
+        rows = (int) Math.floor(map.getHeight() * Math.random())+1;
     }
 
     public Location(int cols, int rows, Map map){
