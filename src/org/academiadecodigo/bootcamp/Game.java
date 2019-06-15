@@ -3,6 +3,7 @@ package org.academiadecodigo.bootcamp;
 import org.academiadecodigo.bootcamp.gameobjects.Player;
 import org.academiadecodigo.bootcamp.gameobjects.PlayerOne;
 import org.academiadecodigo.bootcamp.gameobjects.PlayerTwo;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Game {
 
@@ -12,6 +13,7 @@ public class Game {
     private KeyboardManager keyboardManager;
     private int delay;
     private CollisionDetector collisionDetector;
+    private Picture login;
 
     Game(int delay) {
         map = new Map();
@@ -24,17 +26,27 @@ public class Game {
 
     public void init() {
         keyboardManager.keyboardInit();
-        }
+        login = new Picture(-140, -140, "start.png");
+        login.grow(-150, -150);
+        login.draw();
+    }
+
 
     public void start() throws InterruptedException {
-
-        playerOne.setCollisionDetector(collisionDetector);
-        playerTwo.setCollisionDetector(collisionDetector);
-
-        while (!playerOne.getCollisionDetector().isGameOver()) {
+        while (!collisionDetector.isGameOver()) {
             Thread.sleep(delay);
-            playerOne.getWeapon().setCollisionDetector(collisionDetector);
-            playerTwo.getWeapon().setCollisionDetector(collisionDetector);
+            if (keyboardManager.isGameStart()){
+                login.delete();
+                map.getBackground().draw();
+                playerOne.getImage().draw();
+                playerTwo.getImage().draw();
+                playerOne.setCollisionDetector(collisionDetector);
+                playerTwo.setCollisionDetector(collisionDetector);
+                playerOne.getWeapon().setCollisionDetector(collisionDetector);
+                playerTwo.getWeapon().setCollisionDetector(collisionDetector);
+            }
+            //playerOne.getWeapon().setCollisionDetector(collisionDetector);
+            //playerTwo.getWeapon().setCollisionDetector(collisionDetector);
             playerOne.getWeapon().countDown();
             playerTwo.getWeapon().countDown();
             playerOne.getWeapon().clearField();

@@ -11,6 +11,7 @@ public class KeyboardManager implements KeyboardHandler {
     private Player player1;
     private Player player2;
     private Keyboard keyboard;
+    private boolean gameStart;
 
     public KeyboardManager(Player player1, Player player2) {
         this.player1 = player1;
@@ -59,44 +60,56 @@ public class KeyboardManager implements KeyboardHandler {
             eventPlayerTwoBomb.setKey(KeyboardEvent.KEY_U);
             eventPlayerTwoBomb.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
             this.keyboard.addEventListener(eventPlayerTwoBomb);
+            KeyboardEvent eventGameStart = new KeyboardEvent();
+            eventGameStart.setKey(KeyboardEvent.KEY_SPACE);
+            eventGameStart.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+            this.keyboard.addEventListener(eventGameStart);
         }
 
         @Override
         public void keyPressed(KeyboardEvent keyboardEvent) {
-
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_W && !player1.getCollisionDetector().checkCollision(player1.getLocation().getCols(), player1.getLocation().getRows() - 1))  {
-            player1.getLocation().move(Direction.UP, player1);
-        }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_S && !player1.getCollisionDetector().checkCollision(player1.getLocation().getCols(), player1.getLocation().getRows() + 1))  {
-            player1.getLocation().move(Direction.DOWN,player1);
-        }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_A && !player1.getCollisionDetector().checkCollision(player1.getLocation().getCols() - 1, player1.getLocation().getRows()))  {
-            player1.getLocation().move(Direction.LEFT,player1);
-        }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_D && !player1.getCollisionDetector().checkCollision(player1.getLocation().getCols() + 1, player1.getLocation().getRows()))  {
-            player1.getLocation().move(Direction.RIGHT,player1);
-        }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_Q) {
-            player1.dropBomb();
-        }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_I && !player1.getCollisionDetector().checkCollision(player2.getLocation().getCols(), player2.getLocation().getRows() - 1))  {
-            player2.getLocation().move(Direction.UP,player2);
-        }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_K && !player1.getCollisionDetector().checkCollision(player2.getLocation().getCols(), player2.getLocation().getRows() + 1))  {
-            player2.getLocation().move(Direction.DOWN,player2);
-        }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_J && !player1.getCollisionDetector().checkCollision(player2.getLocation().getCols() - 1, player2.getLocation().getRows()))  {
-            player2.getLocation().move(Direction.LEFT, player2);
-        }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_L && !player1.getCollisionDetector().checkCollision(player2.getLocation().getCols() + 1, player2.getLocation().getRows()))  {
-            player2.getLocation().move(Direction.RIGHT, player2);
-        }
-        if (keyboardEvent.getKey() == KeyboardEvent.KEY_U) {
-            player2.dropBomb();
-        }
+        if (gameStart) {
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_W && !player1.getCollisionDetector().checkCollision(player1.getLocation().getCols(), player1.getLocation().getRows() - 1)) {
+                player1.getLocation().move(Direction.UP, player1);
+            }
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_S && !player1.getCollisionDetector().checkCollision(player1.getLocation().getCols(), player1.getLocation().getRows() + 1)) {
+                player1.getLocation().move(Direction.DOWN, player1);
+            }
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_A && !player1.getCollisionDetector().checkCollision(player1.getLocation().getCols() - 1, player1.getLocation().getRows())) {
+                player1.getLocation().move(Direction.LEFT, player1);
+            }
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_D && !player1.getCollisionDetector().checkCollision(player1.getLocation().getCols() + 1, player1.getLocation().getRows())) {
+                player1.getLocation().move(Direction.RIGHT, player1);
+            }
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_Q) {
+                player1.dropBomb();
+            }
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_I && !player1.getCollisionDetector().checkCollision(player2.getLocation().getCols(), player2.getLocation().getRows() - 1)) {
+                player2.getLocation().move(Direction.UP, player2);
+            }
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_K && !player1.getCollisionDetector().checkCollision(player2.getLocation().getCols(), player2.getLocation().getRows() + 1)) {
+                player2.getLocation().move(Direction.DOWN, player2);
+            }
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_J && !player1.getCollisionDetector().checkCollision(player2.getLocation().getCols() - 1, player2.getLocation().getRows())) {
+                player2.getLocation().move(Direction.LEFT, player2);
+            }
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_L && !player1.getCollisionDetector().checkCollision(player2.getLocation().getCols() + 1, player2.getLocation().getRows())) {
+                player2.getLocation().move(Direction.RIGHT, player2);
+            }
+            if (keyboardEvent.getKey() == KeyboardEvent.KEY_U) {
+                player2.dropBomb();
+            }
+        } else if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE && !gameStart){
+            gameStart = true;
+            }
     }
 
         @Override
         public void keyReleased(KeyboardEvent keyboardEvent) {
         }
+
+    public boolean isGameStart() {
+        return gameStart;
     }
+
+}

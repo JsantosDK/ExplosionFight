@@ -10,10 +10,9 @@ public class Map {
     private int cellSize;
 
     public Map(){
-        background = new Picture(0,0,"floor.png");
-        background.translate(-140,-140);
+        background = new Picture(-140,-140,"floor.png");
         background.grow(-150,-150);
-        background.draw();
+        //background.draw();
         cellSize = 69;
         cols = background.getWidth() / cellSize;
         rows = background.getHeight() / cellSize;
@@ -29,5 +28,9 @@ public class Map {
 
     public int cellsToPixel(int cells){
         return cells * (cellSize);
+    }
+
+    public Picture getBackground() {
+        return background;
     }
 }

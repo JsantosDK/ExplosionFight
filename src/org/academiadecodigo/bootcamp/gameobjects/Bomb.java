@@ -63,14 +63,14 @@ public class Bomb extends Weapon {
         public Explosion(){
             explosions = new Picture[9];
             explosions[0] = new Picture(0, 0, "explosion1.png");
-            explosions[1] = new Picture(0, 0, "explosion2.png");
-            explosions[2] = new Picture(0, 0, "explosion3.png");
-            explosions[3] = new Picture(0, 0, "explosion4.png");
-            explosions[4] = new Picture(0, 0, "explosion5.png");
-            explosions[5] = new Picture(0, 0, "explosion6.png");
-            explosions[6] = new Picture(0, 0, "explosion7.png");
-            explosions[7] = new Picture(0, 0, "explosion8.png");
-            explosions[8] = new Picture(0, 0, "explosion9.png");
+            explosions[1] = new Picture(0, 0, "explosion1.png");
+            explosions[2] = new Picture(0, 0, "explosion1.png");
+            explosions[3] = new Picture(0, 0, "explosion1.png");
+            explosions[4] = new Picture(0, 0, "explosion1.png");
+            explosions[5] = new Picture(0, 0, "explosion1.png");
+            explosions[6] = new Picture(0, 0, "explosion1.png");
+            explosions[7] = new Picture(0, 0, "explosion1.png");
+            explosions[8] = new Picture(0, 0, "explosion1.png");
         }
 
         private void explode(int cols, int rows) {
