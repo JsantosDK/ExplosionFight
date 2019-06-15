@@ -6,8 +6,6 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 public class Bomb extends Weapon {
 
-    private boolean usingBomb;
-    private int timeUntilExplosion;
     private Explosion explosion;
 
     public Bomb(Map map){
@@ -16,32 +14,10 @@ public class Bomb extends Weapon {
         explosion = new Explosion();
     }
 
-    protected void setUpWeapon(int cols, int rows) {
-        if (!usingBomb) {
-            getLocation().changeLocation(cols, rows);
-            usingBomb = true;
-            timeUntilExplosion = 7;
-            getImage().translate(getMap().cellsToPixel(cols) , getMap().cellsToPixel(rows) );
-            getImage().draw();
-        }
-    }
-
-    public void countDown(){
-        if (usingBomb){
-            if (timeUntilExplosion > 0){
-                timeUntilExplosion--;
-            } else if (timeUntilExplosion == 0){
-                useWeapon();
-            }
-        }
-    }
-
     protected void useWeapon(){
         explosion.explode(getLocation().getCols(),getLocation().getRows());
-        getLocation().changeLocation(0, 0);
-        usingBomb = false;
         getImage().translate(-getImage().getX() + 30, -getImage().getY() );
-        getImage().delete();
+        super.useWeapon();
     }
 
     public void clearField() {
@@ -92,16 +68,16 @@ public class Bomb extends Weapon {
                 explosions[usedImages].draw();
                 usedImages++;
             }
-            explosionReset = 2;
+            explosionReset = 15;
             bombArmed = true;
         }
 
         private void reset() {
             if (bombArmed) {
+                getCollisionDetector().checkDamage(colsCenter, minLengthCols,maxLengthCols,rowsCenter,minLengthRows,maxLengthRows, WeaponType.BOMB);
                 if (explosionReset != 0) {
                     explosionReset--;
                 } else {
-                    getCollisionDetector().checkDamage(colsCenter, minLengthCols,maxLengthCols,rowsCenter,minLengthRows,maxLengthRows, WeaponType.BOMB);
                     for (int i = usedImages-1; i >= 0 ; i-- ){
                         explosions[i].translate(-explosions[i].getX(), -explosions[i].getY());
                         explosions[i].delete();

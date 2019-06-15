@@ -12,11 +12,13 @@ public class KeyboardManager implements KeyboardHandler {
     private Player player2;
     private Keyboard keyboard;
     private boolean gameStart;
+    private CollisionDetector collisionDetector;
 
-    public KeyboardManager(Player player1, Player player2) {
+    public KeyboardManager(Player player1, Player player2, CollisionDetector collisionDetector) {
         this.player1 = player1;
         this.player2 = player2;
         this.keyboard = new Keyboard(this);
+        this.collisionDetector = collisionDetector;
     }
 
         public void keyboardInit() {
@@ -68,7 +70,7 @@ public class KeyboardManager implements KeyboardHandler {
 
         @Override
         public void keyPressed(KeyboardEvent keyboardEvent) {
-        if (gameStart) {
+        if (gameStart && !collisionDetector.isGameOver()) {
             if (keyboardEvent.getKey() == KeyboardEvent.KEY_W && !player1.getCollisionDetector().checkCollision(player1.getLocation().getCols(), player1.getLocation().getRows() - 1)) {
                 player1.getLocation().move(Direction.UP, player1);
             }

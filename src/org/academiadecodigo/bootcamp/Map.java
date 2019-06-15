@@ -12,7 +12,6 @@ public class Map {
     public Map(){
         background = new Picture(-140,-140,"floor.png");
         background.grow(-150,-150);
-        //background.draw();
         cellSize = 69;
         cols = background.getWidth() / cellSize;
         rows = background.getHeight() / cellSize;

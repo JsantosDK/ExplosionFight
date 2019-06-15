@@ -7,6 +7,7 @@ public class CollisionDetector {
     private GameObject[] gameObject;
     private Player[] players;
     private boolean gameOver;
+
     public boolean isGameOver() {
         return gameOver;
     }
@@ -48,6 +49,6 @@ public class CollisionDetector {
             }
         }
     }
+
+
 }
-
-

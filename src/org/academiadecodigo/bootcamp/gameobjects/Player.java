@@ -6,13 +6,11 @@ import org.academiadecodigo.bootcamp.Map;
 
 public abstract class Player extends GameObject{
 
-    private int health;
     private Weapon weapon;
 
     public Player(Picture image, Map map){
         super(image, map, new Location(map));
         getImage().translate(map.cellsToPixel(getLocation().getCols()), map.cellsToPixel(getLocation().getRows()));
-        //getImage().draw();
         weapon = new Bomb(map);
     }
 

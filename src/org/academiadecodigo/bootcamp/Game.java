@@ -20,7 +20,7 @@ public class Game {
         playerOne = new PlayerOne(map);
         playerTwo = new PlayerTwo(map);
         collisionDetector = new CollisionDetector(playerOne, playerTwo);
-        keyboardManager = new KeyboardManager(playerOne,playerTwo);
+        keyboardManager = new KeyboardManager(playerOne,playerTwo, collisionDetector);
         this.delay = delay;
     }
 
@@ -31,27 +31,33 @@ public class Game {
         login.draw();
     }
 
+    public void loadGame(){
+        login.delete();
+        map.getBackground().draw();
+        playerOne.getImage().draw();
+        playerTwo.getImage().draw();
+        playerOne.setCollisionDetector(collisionDetector);
+        playerTwo.setCollisionDetector(collisionDetector);
+        playerOne.getWeapon().setCollisionDetector(collisionDetector);
+        playerTwo.getWeapon().setCollisionDetector(collisionDetector);
+    }
+
 
     public void start() throws InterruptedException {
         while (!collisionDetector.isGameOver()) {
             Thread.sleep(delay);
             if (keyboardManager.isGameStart()){
-                login.delete();
-                map.getBackground().draw();
-                playerOne.getImage().draw();
-                playerTwo.getImage().draw();
-                playerOne.setCollisionDetector(collisionDetector);
-                playerTwo.setCollisionDetector(collisionDetector);
-                playerOne.getWeapon().setCollisionDetector(collisionDetector);
-                playerTwo.getWeapon().setCollisionDetector(collisionDetector);
+                loadGame();
             }
             //playerOne.getWeapon().setCollisionDetector(collisionDetector);
             //playerTwo.getWeapon().setCollisionDetector(collisionDetector);
-            playerOne.getWeapon().countDown();
-            playerTwo.getWeapon().countDown();
+
             playerOne.getWeapon().clearField();
             playerTwo.getWeapon().clearField();
+            playerOne.getWeapon().countDown();
+            playerTwo.getWeapon().countDown();
         }
+
 
         System.out.println("Game Over");
 
