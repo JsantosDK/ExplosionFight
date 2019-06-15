@@ -57,7 +57,15 @@ public class Game {
             playerOne.getWeapon().countDown();
             playerTwo.getWeapon().countDown();
         }
-
+        map.getBackground().delete();
+        playerOne.getImage().delete();
+        playerTwo.getImage().delete();
+        if (collisionDetector.isLoser() instanceof PlayerOne){
+            playerTwo.getWinnerScreen().draw();
+            System.out.println("Rick has won.");
+        } else {
+            playerOne.getWinnerScreen().draw();
+        }
 
         System.out.println("Game Over");
 
