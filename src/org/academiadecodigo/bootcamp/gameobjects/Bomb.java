@@ -51,9 +51,9 @@ public class Bomb extends Weapon {
 
         private void explode(int cols, int rows) {
             if (cols - 2 > 0) { minLengthCols = cols - 2; } else { minLengthCols = 1; }
-            if (cols + 2 < getMap().getWidth()-1) { maxLengthCols = cols + 2; } else { maxLengthCols = getMap().getWidth()-1; }
+            if (cols + 2 < getMap().getWidth() - 1) { maxLengthCols = cols + 2; } else { maxLengthCols = getMap().getWidth() - 1; }
             if (rows - 2 > 0) { minLengthRows = rows - 2; } else { minLengthRows = 1; }
-            if (rows + 2 < getMap().getHeight()-1) { maxLengthRows = rows + 2; } else { maxLengthRows = getMap().getHeight()-1; }
+            if (rows + 2 < getMap().getHeight()-1) { maxLengthRows = rows + 2; } else { maxLengthRows = getMap().getHeight() - 1; }
             colsCenter = cols;
             rowsCenter = rows;
 

@@ -7,10 +7,7 @@ public class CollisionDetector {
     private GameObject[] gameObject;
     private Player[] players;
     private boolean gameOver;
-
-    public boolean isGameOver() {
-        return gameOver;
-    }
+    private Player loser;
 
     public CollisionDetector(Player player1, Player player2){
         gameObject = new GameObject[4];
@@ -36,11 +33,13 @@ public class CollisionDetector {
         for (Player player : players) {
             switch (weaponType) {
                 case BOMB:
-                    if (player.getLocation().getCols() > minCols && player.getLocation().getCols() < maxCols && player.getLocation().getRows() == rowsCenter) {
+                    if (player.getLocation().getCols() >= minCols && player.getLocation().getCols() <= maxCols && player.getLocation().getRows() == rowsCenter) {
                         System.out.println("Player one died.");
+                        loser = player;
                         gameOver = true;
-                    } else if (player.getLocation().getRows() > minRows && player.getLocation().getRows() < maxRows && player.getLocation().getCols() == colsCenter) {
+                    } else if (player.getLocation().getRows() >= minRows && player.getLocation().getRows() <= maxRows && player.getLocation().getCols() == colsCenter) {
                         System.out.println("Player one died too.");
+                        loser = player;
                         gameOver = true;
                     }
                     break;
@@ -50,5 +49,11 @@ public class CollisionDetector {
         }
     }
 
+    public boolean isGameOver() {
+        return gameOver;
+    }
+    public Player isLoser(){
+        return loser;
+    }
 
 }
