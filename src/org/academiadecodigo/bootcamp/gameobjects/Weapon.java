@@ -23,7 +23,7 @@ public abstract class Weapon extends GameObject{
         }
     }
 
-    public void countDown(){
+    protected void countDown(){
         if (usingBomb){
             if (timeUntilExplosion > 0){
                 timeUntilExplosion--;
@@ -39,6 +39,9 @@ public abstract class Weapon extends GameObject{
         getImage().delete();
     }
 
-    public abstract void clearField();
+    protected abstract void clearField();
 
+    protected int getTimeUntilExplosion() {
+        return timeUntilExplosion;
+    }
 }

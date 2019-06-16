@@ -10,17 +10,18 @@ public class LightningBolt extends Weapon {
     private Explosion explosion;
 
     public LightningBolt(Map map) {
-        super(new Picture(14, -11, "erlenmeyer.png"), map, new Location(0, 0, map));
-        getImage().grow(-15, -15);
+        super(new Picture(14, -8, "Flask1.png"), map, new Location(0, 0, map));
+        getImage().grow(-18, -18);
         explosion = new Explosion();
     }
 
     protected void useWeapon() {
         explosion.explode(getLocation().getCols(), getLocation().getRows());
-        getImage().translate(-getImage().getX() + 30, -getImage().getY());
+        getImage().translate(-getImage().getX() + 30, -getImage().getY() + 8);
         super.useWeapon();
     }
 
+    @Override
     public void clearField() {
         explosion.reset();
     }
@@ -39,15 +40,15 @@ public class LightningBolt extends Weapon {
 
         public Explosion() {
             explosions = new Picture[9];
-            explosions[0] = new Picture(05, 0, "explosion2.png");
-            explosions[1] = new Picture(05, 0, "explosion2.png");
-            explosions[2] = new Picture(05, 0, "explosion2.png");
-            explosions[3] = new Picture(05, 0, "explosion2.png");
-            explosions[4] = new Picture(05, 0, "explosion2.png");
-            explosions[5] = new Picture(05, 0, "explosion2.png");
-            explosions[6] = new Picture(05, 0, "explosion2.png");
-            explosions[7] = new Picture(05, 0, "explosion2.png");
-            explosions[8] = new Picture(05, 0, "explosion2.png");
+            explosions[0] = new Picture(5, 0, "explosion2.png");
+            explosions[1] = new Picture(5, 0, "explosion2.png");
+            explosions[2] = new Picture(5, 0, "explosion2.png");
+            explosions[3] = new Picture(5, 0, "explosion2.png");
+            explosions[4] = new Picture(5, 0, "explosion2.png");
+            explosions[5] = new Picture(5, 0, "explosion2.png");
+            explosions[6] = new Picture(5, 0, "explosion2.png");
+            explosions[7] = new Picture(5, 0, "explosion2.png");
+            explosions[8] = new Picture(5, 0, "explosion2.png");
             for (Picture lightning : explosions) {
                 lightning.grow(-5,-5);
                 lightning.translate(-8,-8);

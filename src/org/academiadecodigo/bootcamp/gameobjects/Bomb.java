@@ -9,14 +9,14 @@ public class Bomb extends Weapon {
     private Explosion explosion;
 
     public Bomb(Map map){
-        super(new Picture(14,-11,"erlenmeyer.png"), map, new Location(0,0,map));
-        getImage().grow(-15,-15);
+        super(new Picture(14,-8,"Flask3.png"), map, new Location(0,0,map));
+        getImage().grow(-18,-18);
         explosion = new Explosion();
     }
 
     protected void useWeapon(){
         explosion.explode(getLocation().getCols(),getLocation().getRows());
-        getImage().translate(-getImage().getX() + 30, -getImage().getY() );
+        getImage().translate(-getImage().getX() + 30, -getImage().getY() + 8);
         super.useWeapon();
     }
 

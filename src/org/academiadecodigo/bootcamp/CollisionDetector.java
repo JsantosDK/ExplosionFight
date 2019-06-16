@@ -34,25 +34,26 @@ public class CollisionDetector {
             switch (weaponType) {
                 case BOMB:
                     if (player.getLocation().getCols() >= minCols && player.getLocation().getCols() <= maxCols && player.getLocation().getRows() == rowsCenter) {
-                        System.out.println("Player one died.");
                         loser = player;
                         gameOver = true;
                     } else if (player.getLocation().getRows() >= minRows && player.getLocation().getRows() <= maxRows && player.getLocation().getCols() == colsCenter) {
-                        System.out.println("Player one died too.");
                         loser = player;
                         gameOver = true;
                     }
                     break;
-
                 case LIGHTNINGBOLT:
                     if (player.getLocation().getRows() >= minRows && player.getLocation().getRows() <= maxRows && player.getLocation().getCols() == colsCenter) {
-                        System.out.println("Player one died too.");
+                        loser = player;
+                        gameOver = true;
+                    }
+                    break;
+                case ATOMICBOMB:
+                    if (player.getLocation().getCols() >= minCols && player.getLocation().getCols() <= maxCols && player.getLocation().getRows() >= minRows && player.getLocation().getRows() <= maxRows) {
                         loser = player;
                         gameOver = true;
                     }
                     break;
                 default:
-                    System.out.println("Survived.");
             }
         }
     }

@@ -31,32 +31,29 @@ public class Game {
         login.draw();
     }
 
-    public void loadGame(){
+    public void loading(){
         login.delete();
         map.getBackground().draw();
         playerOne.getImage().draw();
         playerTwo.getImage().draw();
         playerOne.setCollisionDetector(collisionDetector);
         playerTwo.setCollisionDetector(collisionDetector);
-        playerOne.getWeapon().setCollisionDetector(collisionDetector);
-        playerTwo.getWeapon().setCollisionDetector(collisionDetector);
     }
 
 
     public void start() throws InterruptedException {
         while (!collisionDetector.isGameOver()) {
             Thread.sleep(delay);
-            if (keyboardManager.isGameStart()){
-                loadGame();
+            if (keyboardManager.isGameStart()) {
+                loading();
             }
-            //playerOne.getWeapon().setCollisionDetector(collisionDetector);
-            //playerTwo.getWeapon().setCollisionDetector(collisionDetector);
-
-            playerOne.getWeapon().clearField();
-            playerTwo.getWeapon().clearField();
-            playerOne.getWeapon().countDown();
-            playerTwo.getWeapon().countDown();
+            playerOne.coolDown();
+            playerTwo.coolDown();
         }
+        end();
+    }
+
+    public void end(){
         map.getBackground().delete();
         playerOne.getImage().delete();
         playerTwo.getImage().delete();
@@ -65,11 +62,5 @@ public class Game {
         } else {
             playerOne.getWinnerScreen().draw();
         }
-
-        System.out.println("Game Over");
-
     }
-
-
-
 }
