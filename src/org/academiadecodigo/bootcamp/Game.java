@@ -66,11 +66,11 @@ public class Game {
         if (collisionDetector.isLoser() instanceof PlayerOne) {
             playerTwo.getWinnerScreen().draw();
             clip.stop();
-            clipRick = new Sound().finalMusicRick();
+            clipMorty = new Sound().finalMusicMorty();
         } else {
             clip.stop();
             playerOne.getWinnerScreen().draw();
-            clipMorty = new Sound().finalMusicMorty();
+            clipRick = new Sound().finalMusicRick();
         }
     }
 }
