@@ -31,6 +31,7 @@ public class CollisionDetector {
 
     public void checkDamage(int colsCenter,int minCols, int maxCols,int rowsCenter ,int minRows, int maxRows, WeaponType weaponType){
         for (Player player : players) {
+
             switch (weaponType) {
                 case BOMB:
                     if (player.getLocation().getCols() >= minCols && player.getLocation().getCols() <= maxCols && player.getLocation().getRows() == rowsCenter) {

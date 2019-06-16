@@ -59,7 +59,8 @@ public class Game {
         end();
     }
 
-    public void end() {
+    public void end() throws InterruptedException {
+        Thread.sleep(800);
         map.getBackground().delete();
         playerOne.getImage().delete();
         playerTwo.getImage().delete();

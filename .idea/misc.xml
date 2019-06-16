@@ -4,7 +4,12 @@
     <option name="OUTPUT_DIRECTORY" value="$USER_HOME$/lib" />
     <option name="OPTION_SCOPE" value="public" />
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectPlainTextFileTypeManager">
+    <file url="file://$PROJECT_DIR$/resources/ingameSong.wav" />
+    <file url="file://$PROJECT_DIR$/resources/mortywins.wav" />
+    <file url="file://$PROJECT_DIR$/resources/rickwins.wav" />
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" project-jdk-name="12" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>
