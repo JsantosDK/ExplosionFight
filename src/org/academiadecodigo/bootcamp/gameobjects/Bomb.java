@@ -9,7 +9,7 @@ public class Bomb extends Weapon {
     private Explosion explosion;
 
     public Bomb(Map map){
-        super(new Picture(14,-8,"Flask3.png"), map, new Location(0,0,map));
+        super(new Picture(14,-8,"resources/Flask3.png"), map, new Location(0,0,map));
         getImage().grow(-18,-18);
         explosion = new Explosion();
     }
@@ -38,15 +38,15 @@ public class Bomb extends Weapon {
 
         public Explosion(){
             explosions = new Picture[9];
-            explosions[0] = new Picture(0, 0, "explosion1.png");
-            explosions[1] = new Picture(0, 0, "explosion1.png");
-            explosions[2] = new Picture(0, 0, "explosion1.png");
-            explosions[3] = new Picture(0, 0, "explosion1.png");
-            explosions[4] = new Picture(0, 0, "explosion1.png");
-            explosions[5] = new Picture(0, 0, "explosion1.png");
-            explosions[6] = new Picture(0, 0, "explosion1.png");
-            explosions[7] = new Picture(0, 0, "explosion1.png");
-            explosions[8] = new Picture(0, 0, "explosion1.png");
+            explosions[0] = new Picture(0, 0, "resources/explosion1.png");
+            explosions[1] = new Picture(0, 0, "resources/explosion1.png");
+            explosions[2] = new Picture(0, 0, "resources/explosion1.png");
+            explosions[3] = new Picture(0, 0, "resources/explosion1.png");
+            explosions[4] = new Picture(0, 0, "resources/explosion1.png");
+            explosions[5] = new Picture(0, 0, "resources/explosion1.png");
+            explosions[6] = new Picture(0, 0, "resources/explosion1.png");
+            explosions[7] = new Picture(0, 0, "resources/explosion1.png");
+            explosions[8] = new Picture(0, 0, "resources/explosion1.png");
         }
 
         private void explode(int cols, int rows) {

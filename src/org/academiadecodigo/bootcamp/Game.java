@@ -16,9 +16,8 @@ public class Game {
     private int delay;
     private CollisionDetector collisionDetector;
     private Picture login;
-    private Clip clip;
-    private Clip clipRick;
-    private Clip clipMorty;
+    private Sound sound;
+
 
     Game(int delay) {
         map = new Map();
@@ -27,14 +26,16 @@ public class Game {
         collisionDetector = new CollisionDetector(playerOne, playerTwo);
         keyboardManager = new KeyboardManager(playerOne,playerTwo, collisionDetector);
         this.delay = delay;
+        sound = new Sound();
     }
 
     public void init() {
         keyboardManager.keyboardInit();
-        login = new Picture(-140, -140, "start.png");
+        login = new Picture(-140, -140, "resources/start.png");
         login.grow(-150, -150);
         login.draw();
-        clip = new Sound().startMusic();
+        sound.playSound("/resources/ingameSong.wav");
+
     }
 
     public void loading(){
@@ -66,12 +67,13 @@ public class Game {
         playerTwo.getImage().delete();
         if (collisionDetector.isLoser() instanceof PlayerOne) {
             playerTwo.getWinnerScreen().draw();
-            clip.stop();
-            clipMorty = new Sound().finalMusicMorty();
+            sound.stopMusic();
+            sound.playSound("/resources/mortywins.wav");
         } else {
-            clip.stop();
             playerOne.getWinnerScreen().draw();
-            clipRick = new Sound().finalMusicRick();
+            sound.stopMusic();
+            sound.playSound("/resources/rickwins.wav");
+
         }
     }
 }

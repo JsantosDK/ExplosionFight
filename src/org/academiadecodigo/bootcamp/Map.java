@@ -10,7 +10,7 @@ public class Map {
     private int cellSize;
 
     public Map(){
-        background = new Picture(-140,-140,"floor.png");
+        background = new Picture(-140,-140,"resources/floor.png");
         background.grow(-150,-150);
         cellSize = 69;
         cols = background.getWidth() / cellSize;

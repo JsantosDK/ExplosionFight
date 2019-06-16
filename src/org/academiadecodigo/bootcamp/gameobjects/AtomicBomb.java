@@ -9,7 +9,7 @@ public class AtomicBomb extends Weapon {
     private Explosion explosion;
 
     public AtomicBomb(Map map) {
-        super(new Picture(14, -8, "Flask2.png"), map, new Location(0, 0, map));
+        super(new Picture(14, -8, "resources/Flask2.png"), map, new Location(0, 0, map));
         getImage().grow(-18,-18);
         explosion = new Explosion();
     }
@@ -40,31 +40,31 @@ public class AtomicBomb extends Weapon {
 
         public Explosion() {
             explosions = new Picture[25];
-            explosions[0] = new Picture(5, 0, "explosion3.png");
-            explosions[1] = new Picture(5, 0, "explosion3.png");
-            explosions[2] = new Picture(5, 0, "explosion3.png");
-            explosions[3] = new Picture(5, 0, "explosion3.png");
-            explosions[4] = new Picture(5, 0, "explosion3.png");
-            explosions[5] = new Picture(5, 0, "explosion3.png");
-            explosions[6] = new Picture(5, 0, "explosion3.png");
-            explosions[7] = new Picture(5, 0, "explosion3.png");
-            explosions[8] = new Picture(5, 0, "explosion3.png");
-            explosions[9] = new Picture(5, 0, "explosion3.png");
-            explosions[10] = new Picture(5, 0, "explosion3.png");
-            explosions[11] = new Picture(5, 0, "explosion3.png");
-            explosions[12] = new Picture(5, 0, "explosion3.png");
-            explosions[13] = new Picture(5, 0, "explosion3.png");
-            explosions[14] = new Picture(5, 0, "explosion3.png");
-            explosions[15] = new Picture(5, 0, "explosion3.png");
-            explosions[16] = new Picture(5, 0, "explosion3.png");
-            explosions[17] = new Picture(5, 0, "explosion3.png");
-            explosions[18] = new Picture(5, 0, "explosion3.png");
-            explosions[19] = new Picture(5, 0, "explosion3.png");
-            explosions[20] = new Picture(5, 0, "explosion3.png");
-            explosions[21] = new Picture(5, 0, "explosion3.png");
-            explosions[22] = new Picture(5, 0, "explosion3.png");
-            explosions[23] = new Picture(5, 0, "explosion3.png");
-            explosions[24] = new Picture(5, 0, "explosion3.png");
+            explosions[0] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[1] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[2] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[3] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[4] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[5] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[6] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[7] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[8] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[9] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[10] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[11] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[12] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[13] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[14] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[15] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[16] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[17] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[18] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[19] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[20] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[21] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[22] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[23] = new Picture(5, 0, "resources/explosion3.png");
+            explosions[24] = new Picture(5, 0, "resources/explosion3.png");
             blastRadius = 2;
             for (Picture atomicBomb : explosions) {
                 atomicBomb.grow(-200,-200);
