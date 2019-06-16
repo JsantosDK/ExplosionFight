@@ -5,6 +5,8 @@ import org.academiadecodigo.bootcamp.gameobjects.PlayerOne;
 import org.academiadecodigo.bootcamp.gameobjects.PlayerTwo;
 import org.academiadecodigo.simplegraphics.pictures.Picture;
 
+import javax.sound.sampled.Clip;
+
 public class Game {
 
     private Map map;
@@ -14,6 +16,9 @@ public class Game {
     private int delay;
     private CollisionDetector collisionDetector;
     private Picture login;
+    private Clip clip;
+    private Clip clipRick;
+    private Clip clipMorty;
 
     Game(int delay) {
         map = new Map();
@@ -29,6 +34,7 @@ public class Game {
         login = new Picture(-140, -140, "start.png");
         login.grow(-150, -150);
         login.draw();
+        clip = new Sound().startMusic();
     }
 
     public void loading(){
@@ -53,14 +59,18 @@ public class Game {
         end();
     }
 
-    public void end(){
+    public void end() {
         map.getBackground().delete();
         playerOne.getImage().delete();
         playerTwo.getImage().delete();
-        if (collisionDetector.isLoser() instanceof PlayerOne){
+        if (collisionDetector.isLoser() instanceof PlayerOne) {
             playerTwo.getWinnerScreen().draw();
+            clip.stop();
+            clipRick = new Sound().finalMusicRick();
         } else {
+            clip.stop();
             playerOne.getWinnerScreen().draw();
+            clipMorty = new Sound().finalMusicMorty();
         }
     }
 }

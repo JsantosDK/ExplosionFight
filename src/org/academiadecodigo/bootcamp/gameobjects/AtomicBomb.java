@@ -39,7 +39,7 @@ public class AtomicBomb extends Weapon {
         private int maxLengthRows;
 
         public Explosion() {
-            explosions = new Picture[9];
+            explosions = new Picture[25];
             explosions[0] = new Picture(5, 0, "explosion3.png");
             explosions[1] = new Picture(5, 0, "explosion3.png");
             explosions[2] = new Picture(5, 0, "explosion3.png");
@@ -49,7 +49,23 @@ public class AtomicBomb extends Weapon {
             explosions[6] = new Picture(5, 0, "explosion3.png");
             explosions[7] = new Picture(5, 0, "explosion3.png");
             explosions[8] = new Picture(5, 0, "explosion3.png");
-            blastRadius = 1;
+            explosions[9] = new Picture(5, 0, "explosion3.png");
+            explosions[10] = new Picture(5, 0, "explosion3.png");
+            explosions[11] = new Picture(5, 0, "explosion3.png");
+            explosions[12] = new Picture(5, 0, "explosion3.png");
+            explosions[13] = new Picture(5, 0, "explosion3.png");
+            explosions[14] = new Picture(5, 0, "explosion3.png");
+            explosions[15] = new Picture(5, 0, "explosion3.png");
+            explosions[16] = new Picture(5, 0, "explosion3.png");
+            explosions[17] = new Picture(5, 0, "explosion3.png");
+            explosions[18] = new Picture(5, 0, "explosion3.png");
+            explosions[19] = new Picture(5, 0, "explosion3.png");
+            explosions[20] = new Picture(5, 0, "explosion3.png");
+            explosions[21] = new Picture(5, 0, "explosion3.png");
+            explosions[22] = new Picture(5, 0, "explosion3.png");
+            explosions[23] = new Picture(5, 0, "explosion3.png");
+            explosions[24] = new Picture(5, 0, "explosion3.png");
+            blastRadius = 2;
             for (Picture atomicBomb : explosions) {
                 atomicBomb.grow(-200,-200);
                 atomicBomb.translate(-205,-195);
